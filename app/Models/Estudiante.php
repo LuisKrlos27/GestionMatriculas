@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Estudiantes extends Model
+class Estudiante extends Model
 {
     protected $table = "estudiantes";
 
@@ -18,7 +18,7 @@ class Estudiantes extends Model
     //relaciones
     public function matriculas(){
 
-        return $this->hasMany(Matriculas::class,'id_estudiante');
+        return $this->hasMany(Matricula::class,'id_estudiante');
     }
 
 

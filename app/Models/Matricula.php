@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Matriculas extends Model
+class Matricula extends Model
 {
     protected $table = "matriculas";
     public $timestamps = false;
@@ -13,11 +13,11 @@ class Matriculas extends Model
     protected $casts = ['estado' => 'boolean',];
     public function estudiante()
     {
-        return $this->belongsTo(Estudiantes::class, 'id_estudiante');
+        return $this->belongsTo(Estudiante::class, 'id_estudiante');
     }
 
     public function materia()
     {
-        return $this->belongsTo(Materias::class, 'id_materia');
+        return $this->belongsTo(Materia::class, 'id_materia');
     }
 }

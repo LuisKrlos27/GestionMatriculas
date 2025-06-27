@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Programas;
+use App\Models\Programa;
 use Illuminate\Http\Request;
 
-class ProgramasController extends Controller
+class ProgramaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class ProgramasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Programas $programas)
+    public function show(Programa $programas)
     {
         //
     }
@@ -42,7 +42,7 @@ class ProgramasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Programas $programas)
+    public function edit(Programa $programas)
     {
         //
     }
@@ -50,7 +50,7 @@ class ProgramasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Programas $programas)
+    public function update(Request $request, Programa $programas)
     {
         //
     }
@@ -58,7 +58,7 @@ class ProgramasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Programas $programas)
+    public function destroy(Programa $programas)
     {
         //
     }

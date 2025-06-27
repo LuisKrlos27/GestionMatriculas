@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Materias_Docentes;
+use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
-class MateriasDocentesController extends Controller
+
+class EstudianteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $estudiantes = Estudiante::all();
+        return view("estudiantes.estudiantesindex", compact("estudiantes"));
     }
 
     /**
@@ -34,7 +36,7 @@ class MateriasDocentesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Materias_Docentes $materias_Docentes)
+    public function show(Estudiante $estudiantes)
     {
         //
     }
@@ -42,7 +44,7 @@ class MateriasDocentesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Materias_Docentes $materias_Docentes)
+    public function edit(Estudiante $estudiantes)
     {
         //
     }
@@ -50,7 +52,7 @@ class MateriasDocentesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Materias_Docentes $materias_Docentes)
+    public function update(Request $request, Estudiante $estudiantes)
     {
         //
     }
@@ -58,7 +60,7 @@ class MateriasDocentesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Materias_Docentes $materias_Docentes)
+    public function destroy(Estudiante $estudiantes)
     {
         //
     }

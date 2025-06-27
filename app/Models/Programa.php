@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Programas extends Model
+class Programa extends Model
 {
     protected $table = "programas";
     public $timestamps = false;
@@ -13,7 +13,7 @@ class Programas extends Model
 
     public function materias()
     {
-        return $this->hasMany(Materias::class, 'id_programa');
+        return $this->hasMany(Materia::class, 'id_programa');
     }
 }
 
