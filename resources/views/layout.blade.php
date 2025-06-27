@@ -21,7 +21,7 @@
                     <li><a>Matriculas</a></li>
                 </ul>
             </div>
-            <a class="btn btn-ghost text-xl">Gestión Matrículas</a>
+            <a href="http://127.0.0.1:8000" class="btn btn-ghost text-xl">Gestión Matrículas</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
@@ -45,7 +45,7 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="btn">Login</a>
+            <a class="btn">Salir</a>
         </div>
     </div>
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('documento')->nullable();
             $table->integer('edad')->nullable();
             $table->string('direccion',100);
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->string('correo',50);
             $table->date('fecha_nacimiento')->nullable();
             $table->timestamps();
