@@ -1,10 +1,10 @@
 @extends('layout')
 
 @section('content')
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 px-4">
 
     <!-- Filtros o menú lateral -->
-    <div class="col-span-1 bg-base-200 rounded p-4">
+    <div class="md:col-span-1 bg-base-200 rounded p-4">
         <h2 class="text-lg font-bold mb-4">Filtros</h2>
         <form>
             <label class="label">Nombre</label>
@@ -22,46 +22,48 @@
     </div>
 
     <!-- Tabla de estudiantes -->
-    <div class="col-span-3 bg-base-100 p-4 rounded shadow">
-        <div class="flex justify-between items-center mb-4">
+    <div class="md:col-span-3 bg-base-100 p-4 rounded shadow overflow-x-auto">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
             <h2 class="text-xl font-bold">Listado de Estudiantes</h2>
-            <a href="{{ route('estudiantes.create') }}" class="btn btn-success">
-                + Nuevo Estudiante
-            </a>
+            <a href="{{ route('estudiantes.create') }}" class="btn btn-success w-full sm:w-auto">+ Nuevo Estudiante</a>
         </div>
 
-        <table class="table table-zebra w-full">
+        <table class="table table-zebra w-full text-sm">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>
+                    <th>Documento</th>
                     <th>Edad</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
                     <th>Correo</th>
+                    <th>F. Nacimiento</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
-    @foreach ($estudiantes as $est)
-        <tr>
-            <td>{{ $est->nombre }}</td>
-            <td>{{ $est->apellido }}</td>
-            <td>{{ $est->edad }}</td>
-            <td>{{ $est->correo }}</td>
-            <td class="flex gap-2">
-                <!-- Botón Editar -->
-                <a href="{{ route('estudiantes.edit', $est->id) }}" class="btn btn-sm btn-warning">Editar</a>
-
-                <!-- Botón Eliminar -->
-                <form action="{{ route('estudiantes.destroy', $est->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este estudiante?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-error">Eliminar</button>
-                </form>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
+                @foreach ($estudiantes as $est)
+                    <tr>
+                        <td>{{ $est->nombre }}</td>
+                        <td>{{ $est->apellido }}</td>
+                        <td>{{ $est->documento }}</td>
+                        <td>{{ $est->edad }}</td>
+                        <td>{{ $est->direccion }}</td>
+                        <td>{{ $est->telefono }}</td>
+                        <td>{{ $est->correo }}</td>
+                        <td>{{ $est->fecha_nacimiento }}</td>
+                        <td class="flex flex-col sm:flex-row gap-1">
+                            <a href="{{ route('estudiantes.edit', $est->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <form action="{{ route('estudiantes.destroy', $est->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este estudiante?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-error">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
     </div>
 
