@@ -12,7 +12,12 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        //
+
+        $docente = Docente::all();
+
+        //dd($docente);
+        return view("docentes.docentesindex", compact('docente'));
+
     }
 
     /**
@@ -20,7 +25,7 @@ class DocenteController extends Controller
      */
     public function create()
     {
-        //
+        return view("docentes.docentesform");
     }
 
     /**
@@ -28,13 +33,25 @@ class DocenteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'nombre'=>'required|string|max:100',
+            'correo'=>'nullable|email|max:50',
+            'titulo'=>'nullable|string|max:50',
+        ]);
+        //dd($validated);
+        //crear nuevo docente con los datos validos
+        Docente::create($validated);
+        //dump($validated);
+        //redirigir a la lista con mensaje de exito
+        return redirect()->route('docentes.index')->with('success','Docente registrado correctamente');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Docente $docentes)
+    public function show(Docente $docente)
     {
         //
     }
@@ -42,24 +59,34 @@ class DocenteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Docente $docentes)
+    public function edit(Docente $docente)
     {
-        //
+        return view('docentes.docentesedit', compact('docente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Docente $docentes)
+    public function update(Request $request, Docente $docente)
     {
-        //
+        $validated = $request->validate([
+            'nombre'=>'required|string|max:100',
+            'correo'=>'nullable|email|max:50',
+            'titulo'=>'nullable|string|max:50',
+        ]);
+
+        $docente->update([$validated]);
+
+        return redirect()->route('docentes.index')->with('success','Docente actualizado correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Docente $docentes)
+    public function destroy(Docente $docente)
     {
-        //
+        $docente->delete();
+
+        return redirect()->route('docentes.index')->with('success','Docente eliminado correctamente.');
     }
 }

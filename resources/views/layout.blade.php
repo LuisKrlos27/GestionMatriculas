@@ -37,7 +37,7 @@
                     <details>
                         <summary>Docentes</summary>
                         <ul class="p-2">
-                            <li><a href="#">Listar docentes</a></li>
+                            <li><a href="{{ route('docentes.index') }}">Listar docentes</a></li>
                         </ul>
                     </details>
                 </li>

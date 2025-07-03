@@ -13,8 +13,8 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        $estudiantes = Estudiante::all();
-        return view("estudiantes.estudiantesindex", compact("estudiantes"));
+        $estudiante = Estudiante::all();
+        return view("estudiantes.estudiantesindex", compact("estudiante"));
     }
 
     /**
@@ -22,7 +22,7 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        return view("estudiantes.estudiantescreate");
+        return view("estudiantes.estudiantesform");
     }
 
     /**
