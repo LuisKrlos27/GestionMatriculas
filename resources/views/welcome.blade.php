@@ -16,9 +16,18 @@
                     </svg>
                 </div>
                 <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    <li>
+                        <details>
+                            <summary>Docentes</summary>
+                            <ul class="p-2">
+                                <li><a href="{{ route('docentes.index') }}">Listar docentes</a></li>
+                                <li><a href="#">Materias docentes</a></li>
+                            </ul>
+                        </details>
+                    </li>
                     <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
-                    <li><a>Docentes</a></li>
-                    <li><a>Matriculas</a></li>
+                    <li><a href="{{ route('programas.index') }}" >Programas</a></li>
+                    <li><a href="{{ route('materias.index') }}" >Materias</a></li>
                 </ul>
             </div>
             <a href="http://127.0.0.1:8000/" class="btn btn-ghost text-xl">Gestión Matrículas</a>
@@ -27,21 +36,16 @@
             <ul class="menu menu-horizontal px-1">
                 <li>
                     <details>
-                        <summary>Estudiantes</summary>
-                        <ul class="p-2">
-                            <li><a href="{{ route('estudiantes.index') }}">Listar estudiantes</a></li>
-                        </ul>
-                    </details>
-                </li>
-                <li>
-                    <details>
                         <summary>Docentes</summary>
                         <ul class="p-2">
                             <li><a href="{{ route('docentes.index') }}">Listar docentes</a></li>
+                            <li><a href="#">Materias docentes</a></li>
                         </ul>
                     </details>
                 </li>
-                <li><a href="#">Matriculas</a></li>
+                <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
+                <li><a href="{{ route('programas.index') }}">Programas</a></li>
+                <li><a href="{{ route('materias.index') }}">Materias</a></li>
             </ul>
         </div>
         <div class="navbar-end">

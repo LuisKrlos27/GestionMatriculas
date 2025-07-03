@@ -39,10 +39,10 @@ class DocenteController extends Controller
             'correo'=>'nullable|email|max:50',
             'titulo'=>'nullable|string|max:50',
         ]);
-        //dd($validated);
+
         //crear nuevo docente con los datos validos
         Docente::create($validated);
-        //dump($validated);
+
         //redirigir a la lista con mensaje de exito
         return redirect()->route('docentes.index')->with('success','Docente registrado correctamente');
 
@@ -75,7 +75,7 @@ class DocenteController extends Controller
             'titulo'=>'nullable|string|max:50',
         ]);
 
-        $docente->update([$validated]);
+        $docente->update($validated);
 
         return redirect()->route('docentes.index')->with('success','Docente actualizado correctamente.');
     }
