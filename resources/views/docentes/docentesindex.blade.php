@@ -92,9 +92,5 @@
             }
         }, 3000); // 3 segundos
     </script>
-@endsection
-
-
-
 
 @endsection

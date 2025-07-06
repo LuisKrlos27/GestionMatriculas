@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Docente;
+use App\Models\Materia;
 use App\Models\Materia_Docente;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,10 @@ class MateriaDocenteController extends Controller
      */
     public function index()
     {
-        //
+
+        $materia_docente = Materia_Docente::all();
+
+        return view("materiaDocente.materiaDocenteindex", compact("materia_docente"));
     }
 
     /**
@@ -20,7 +25,9 @@ class MateriaDocenteController extends Controller
      */
     public function create()
     {
-        //
+        $docente = Docente::all();
+        $materia = Materia::all();
+        return view("materiaDocente.materiaDocenteform", compact("docente","materia"));
     }
 
     /**
@@ -28,7 +35,19 @@ class MateriaDocenteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $validated = $request->validate([
+
+            'id_docente'=>'required|exists:docentes,id',
+            'id_materia'=>'required|exists:materias,id',
+            'semestre'=>'nullable|integer|max:50',
+
+        ]);
+
+
+        Materia_Docente::create($validated);
+        return redirect()->route('materias_docente.index')->with('success', 'Registro exitoso');
+
     }
 
     /**
