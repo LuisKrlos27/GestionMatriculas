@@ -77,8 +77,19 @@ class ProgramaController extends Controller
      */
     public function destroy(Programa $programa)
     {
-        $programa->delete();
+        $programa = Programa::find($programa->id);
 
-        return redirect()->route("programas.index")->with("success","Programa eliminado correctamente");
+
+        if ($programa->materias()->count() > 0) {
+
+            //dd($programa,'dentro de if');
+            return back()->with('error', 'No se puede eliminar el programa porque tiene materias asociadas.');
+        }
+        else {
+            $programa->delete();
+
+            return redirect()->route("programas.index")->with("success","Programa eliminado correctamente");
+
+        }
     }
 }

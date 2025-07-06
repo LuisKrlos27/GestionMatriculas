@@ -23,13 +23,16 @@
                 <select name="id_programa" class="select select-bordered w-full">
                     <option value="">-- Seleccione un programa --</option>
                     @foreach($programa as $prog)
-                        <option value="{{ $prog->id }}">{{ $prog->nombre }}</option>
+                        <option value="{{ $prog->id }}" {{ $prog->id == $materia->id_programa ? 'selected' : '' }}>
+                            {{ $prog->nombre }}
+                        </option>
                     @endforeach
                 </select>
             </div>
 
+
             <div class="flex justify-end gap-4 pt-4">
-                <a href="{{ route('estudiantes.index') }}" class="btn btn-outline">Cancelar</a>
+                <a href="{{ route('materias.index') }}" class="btn btn-outline">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             </div>
         </form>

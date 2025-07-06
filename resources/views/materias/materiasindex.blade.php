@@ -2,6 +2,22 @@
 @section('content')
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 px-4">
 
+        <!-- Mensajes de éxito y error con desvanecimiento -->
+        @if (session('success'))
+            <div id="success-alert" class="alert alert-success shadow-lg mb-4 md:col-span-4 transition-opacity duration-500">
+                <div>
+                    <span>{{ session('success') }}</span>
+                </div>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div id="error-alert" class="alert alert-error shadow-lg mb-4 md:col-span-4 transition-opacity duration-500">
+                <div>
+                    <span>{{ session('error') }}</span>
+                </div>
+            </div>
+        @endif
         <!-- Filtros o menú lateral -->
         <div class="md:col-span-1 bg-base-200 rounded p-4">
             <h2 class="text-lg font-bold mb-4">Filtros</h2>
@@ -57,5 +73,22 @@
         </div>
 
     </div>
+        <!-- Script para ocultar alertas después de 3 segundos -->
+    <script>
+        setTimeout(() => {
+            const success = document.getElementById('success-alert');
+            const error = document.getElementById('error-alert');
+
+            if (success) {
+                success.style.opacity = '0';
+                setTimeout(() => success.remove(), 500); // Quita el elemento del DOM tras desvanecer
+            }
+
+            if (error) {
+                error.style.opacity = '0';
+                setTimeout(() => error.remove(), 500);
+            }
+        }, 3000); // 3 segundos
+    </script>
 
 @endsection

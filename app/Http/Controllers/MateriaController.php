@@ -69,7 +69,7 @@ class MateriaController extends Controller
     {
         $validated = $request->validate([
             'nombre' => 'nullable|string|max:100',
-            'codigo' => 'nullable|integer|min:0|unique:materias,codigo',
+            'codigo' => 'nullable|integer|min:0|unique:materias,codigo,' . $materia->id,
             'id_programa' => 'required|exists:programas,id',
         ]);
         $materia->update($validated);
