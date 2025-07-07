@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('content')
+
 <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
+
     <h2 class="text-2xl font-bold mb-6">Registrar Nuevo Estudiante</h2>
 
     <form action="{{ route('estudiantes.store') }}" method="POST" class="space-y-4">

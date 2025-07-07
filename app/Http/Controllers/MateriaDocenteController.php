@@ -61,9 +61,11 @@ class MateriaDocenteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Materia_Docente $materias_Docentes)
+    public function edit(Materia_Docente $materias_docente)
     {
-        //
+        $docente = Docente::all();
+        $materia = Materia::all();
+        return view('materiaDocente.materiaDocenteedit', compact('materias_docente','docente','materia'));
     }
 
     /**
@@ -77,8 +79,12 @@ class MateriaDocenteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Materia_Docente $materias_Docentes)
+    public function destroy(Materia_Docente $materias_docente)
     {
-        //
+        $materias_docente->delete();
+
+        return redirect()->route('materias_docente.index')->with('success','Eliminado correctamente');
+
+
     }
 }
