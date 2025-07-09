@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matricula;
+use App\Models\Estudiante;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 
 class MatriculaController extends Controller
@@ -12,7 +14,11 @@ class MatriculaController extends Controller
      */
     public function index()
     {
-        //
+        $matricula =Matricula::all();
+        $estudiante = Estudiante::all();
+        $materia = Materia::all();
+
+        return view("matriculas.matriculasindex", compact("matricula","estudiante","materia"));
     }
 
     /**
@@ -20,7 +26,9 @@ class MatriculaController extends Controller
      */
     public function create()
     {
-        //
+        $estudiante = Estudiante::all();
+        $materia = Materia::all();
+        return view("matriculas.matriculasform", compact("estudiante","materia"));
     }
 
     /**
@@ -28,7 +36,16 @@ class MatriculaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //($request);
+        $validated = $request->validate([
+            'id_estudiante'=>'required|exists:estudiantes,id',
+            'id_materia'=> 'required|exists:materias,id',
+            'fecha_matricula'=> 'required|date',
+            'estado'=> 'required|boolean',
+        ]);
+
+        Matricula::create($validated);
+        return redirect()->route('matriculas.index')->with('success','Matricula registrado correctamente.');
     }
 
     /**
@@ -44,7 +61,10 @@ class MatriculaController extends Controller
      */
     public function edit(Matricula $matriculas)
     {
-        //
+        $estudiante = Estudiante::all();
+        $materia = Materia::all();
+        return view("matriculas.matriculasedit", compact("estudiante","materia"));
+
     }
 
     /**
@@ -52,14 +72,30 @@ class MatriculaController extends Controller
      */
     public function update(Request $request, Matricula $matriculas)
     {
-        //
+         //($request);
+        $validated = $request->validate([
+            'id_estudiante'=>'required|exists:estudiantes,id',
+            'id_materia'=> 'required|exists:materias,id',
+            'fecha_matricula'=> 'required|date',
+            'estado'=> 'required|boolean',
+        ]);
+        $matriculas->update($validated);
+        return redirect()->route('matriculas.index')->with('success','Matricula actualizada correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Matricula $matriculas)
+    public function destroy(Matricula $matricula)
     {
-        //
+
+    try
+    {
+        $matricula->delete();
+            return redirect()->route('matriculas.index')->with('success', 'Matrícula eliminada correctamente.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error al eliminar la matrícula: ' . $e->getMessage());
+        }
     }
+
 }

@@ -26,6 +26,7 @@
                         </details>
                     </li>
                     <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
+                    <li><a href="{{ route('matriculas.index') }}">Matriculas</a></li>
                     <li><a href="{{ route('programas.index') }}" >Programas</a></li>
                     <li><a href="{{ route('materias.index') }}" >Materias</a></li>
                 </ul>
@@ -39,11 +40,12 @@
                         <summary>Docentes</summary>
                         <ul class="p-2">
                             <li><a href="{{ route('docentes.index') }}">Listar docentes</a></li>
-                            <li><a href="#">Materias docentes</a></li>
+                            <li><a href="{{ route('materias_docente.index') }}">Materias docentes</a></li>
                         </ul>
                     </details>
                 </li>
                 <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
+                <li><a href="{{ route('matriculas.index') }}">Matriculas</a></li>
                 <li><a href="{{ route('programas.index') }}">Programas</a></li>
                 <li><a href="{{ route('materias.index') }}">Materias</a></li>
             </ul>
