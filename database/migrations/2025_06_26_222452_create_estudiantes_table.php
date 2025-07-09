@@ -20,7 +20,10 @@ return new class extends Migration
             $table->string('direccion',100);
             $table->bigInteger('telefono');
             $table->string('correo',50);
-            $table->date('fecha_nacimiento')->nullable();
+            $table->bigInteger('id_sede');
+            $table->foreign('id_sede')->references('id')->on('sedes');$table->date('fecha_nacimiento')->nullable();
+            $table->bigInteger('id_programa');
+            $table->foreign('id_programa')->references('id')->on('programas');
             $table->timestamps();
         });
     }

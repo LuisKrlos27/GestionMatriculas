@@ -17,7 +17,13 @@ return new class extends Migration
             $table->foreign('id_docente')->references('id')->on('docentes');
             $table->bigInteger('id_materia')->unsigned();
             $table->foreign('id_materia')->references('id')->on('materias');
+            $table->bigInteger('id_sede');
+            $table->foreign('id_sede')->references('id')->on('sedes');
+            $table->bigInteger('id_programa');
+            $table->foreign('id_programa')->references('id')->on('programas');
             $table->integer('semestre')->nullable();
+            $table->bigInteger('id_horario');
+            $table->foreign('id_horario')->references('id')->on('horarios');
             $table->timestamps();
         });
     }

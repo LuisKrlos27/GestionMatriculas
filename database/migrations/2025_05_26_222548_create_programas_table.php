@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('programas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',100)->nullable();
+            $table->integer('codigo')->nullable();
+            $table->bigInteger('id_sede');
+            $table->foreign('id_sede')->references('id')->on('sedes');
             $table->timestamps();
         });
     }
