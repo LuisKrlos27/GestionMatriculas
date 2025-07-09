@@ -27,7 +27,14 @@ El sistema permite:
 
 ---
 
+## 📷 __Programa funcionando__
 
+### 👨🏼‍🎓 __Listado de estudiantes__
+
+![image](https://github.com/user-attachments/assets/c3c9646a-dbd5-4065-9ac9-92a046b7bdb4)
+
+
+---
 # 📌 Notas
 El proyecto no utiliza Tailwind por defecto. Se instala y configura manualmente junto con DaisyUI.
 
