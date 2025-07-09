@@ -17,8 +17,7 @@ return new class extends Migration
             $table->integer('codigo')->nullable();
             $table->bigInteger('id_programa')->unsigned();
             $table->foreign('id_programa')->references('id')->on('programas');
-            $table->bigInteger('id_cod_prog');
-            $table->foreign('id_cod_prog')->references('id')->on('programas');
+            $table->integer('id_cod_prog')->nullable();     
             $table->bigInteger('id_sede');
             $table->foreign('id_sede')->references('id')->on('sedes');
 

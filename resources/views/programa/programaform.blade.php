@@ -12,6 +12,23 @@
                 <input type="text" name="nombre" class="input input-bordered w-full" required>
             </div>
 
+            <div>
+                <label class="label">Codigo</label>
+                <input type="number" name="codigo" class="input input-bordered w-full" required>
+            </div>
+
+            <div>
+                <label class="label">Sede</label>
+                <select name="id_sede" class="select select-bordered w-full">
+                    <option value="">-- Seleccione una sede --</option>
+                    @foreach($sede as $se)
+                        <option value="{{ $se->id }}">{{ $se->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
+
             <div class="flex justify-end gap-4 pt-4">
                 <a href="{{ route('programas.index') }}" class="btn btn-outline">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar</button>

@@ -54,6 +54,8 @@
                         <th>Dirección</th>
                         <th>Teléfono</th>
                         <th>Correo</th>
+                        <th>Sede</th>
+                        <th>Programa</th>
                         <th>F. Nacimiento</th>
                         <th>Opciones</th>
                     </tr>
@@ -68,6 +70,8 @@
                             <td>{{ $est->direccion }}</td>
                             <td>{{ $est->telefono }}</td>
                             <td>{{ $est->correo }}</td>
+                            <td>{{ $est->sede->nombre }}</td>
+                            <td>{{ $est->programa->nombre }}</td>
                             <td>{{ $est->fecha_nacimiento }}</td>
                             <td class="flex flex-col sm:flex-row gap-1">
                                 <a href="{{ route('estudiantes.edit', $est->id) }}" class="btn btn-sm btn-warning">Editar</a>

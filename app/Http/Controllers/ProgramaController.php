@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sede;
 use App\Models\Programa;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,9 @@ class ProgramaController extends Controller
     public function index()
     {
         $programa = Programa::all();
+        $sede = Sede::all();
 
-        return view("programa.programaindex", compact("programa"));
+        return view("programa.programaindex", compact("programa","sede") );
     }
 
     /**
@@ -22,7 +24,8 @@ class ProgramaController extends Controller
      */
     public function create()
     {
-        return view("programa.programaform");
+        $sede = Sede::all();
+        return view("programa.programaform", compact("sede") );
     }
 
     /**
@@ -32,6 +35,8 @@ class ProgramaController extends Controller
     {
         $validated = $request->validate([
             'nombre'=> 'required|string|max:100',
+            'codigo' => 'nullable|integer|min:0|unique:programas,codigo',
+            'id_sede'=> 'required|exists:sedes,id',
         ]);
 
         Programa::create($validated);
@@ -52,7 +57,8 @@ class ProgramaController extends Controller
      */
     public function edit(Programa $programa)
     {
-        return view("programa.programaedit", compact("programa"));
+        $sede = Sede::all();
+        return view("programa.programaedit", compact("programa",'sede'));
 
 
     }
@@ -64,6 +70,8 @@ class ProgramaController extends Controller
     {
         $validated = $request->validate([
             'nombre'=> 'required|string|max:100',
+            'codigo' => 'nullable|integer|min:0|unique:programas,codigo',
+            'id_sede'=> 'required|exists:sedes,id',
         ]);
 
         $programa->update($validated);

@@ -49,6 +49,8 @@
                         <th>Nombre</th>
                         <th>Codigo</th>
                         <th>Nombre del programa</th>
+                        <th>Codigo del programa</th>
+                        <th>Sede</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -58,6 +60,8 @@
                             <td>{{ $mate->nombre }}</td>
                             <td>{{ $mate->codigo }}</td>
                             <td>{{ $mate->programa->nombre }}</td>
+                            <td>{{ $mate->id_cod_prog }}</td>
+                            <td>{{ $mate->sede->nombre }}</td>
                             <td class="flex flex-col sm:flex-row gap-1">
                                 <a href="{{ route('materias.edit', $mate->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                 <form action="{{ route('materias.destroy', $mate->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta materia?')">

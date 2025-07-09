@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sede;
+use App\Models\Programa;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,9 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        return view("estudiantes.estudiantesform");
+        $sede = Sede::all();
+        $programa = Programa::all();
+        return view("estudiantes.estudiantesform", compact("sede","programa"));
     }
 
     /**
@@ -39,6 +43,8 @@ class EstudianteController extends Controller
         'direccion' => 'nullable|string|max:100',
         'telefono' => 'nullable|numeric',
         'correo' => 'nullable|email|max:50',
+        'id_sede'=> 'required|exists:sedes,id',
+        'id_programa'=> 'required|exists:programas,id',
         'fecha_nacimiento' => 'nullable|date',
     ]);
 
@@ -64,7 +70,9 @@ class EstudianteController extends Controller
      */
     public function edit(Estudiante $estudiante)
     {
-        return view('estudiantes.estudiantesedit', compact('estudiante'));
+        $sede = Sede::all();
+        $programa = Programa::all();
+        return view('estudiantes.estudiantesedit', compact('estudiante','sede','programa'));
     }
 
     /**
@@ -80,6 +88,8 @@ class EstudianteController extends Controller
         'direccion' => 'nullable|string|max:100',
         'telefono' => 'nullable|string|max:20',
         'correo' => 'nullable|email|max:50',
+        'id_sede'=> 'required|exists:sedes,id',
+        'id_programa'=> 'required|exists:programas,id',
         'fecha_nacimiento' => 'nullable|date',
     ]);
 

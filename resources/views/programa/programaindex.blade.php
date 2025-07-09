@@ -50,6 +50,8 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Codigo</th>
+                        <th>Sede</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -57,6 +59,8 @@
                     @foreach ($programa as $prog)
                         <tr>
                             <td>{{ $prog->nombre }}</td>
+                            <td>{{ $prog->codigo }}</td>
+                            <td>{{ $prog->sede->nombre }}</td>
                             <td class="flex flex-col sm:flex-row gap-1">
                                 <a href="{{ route('programas.edit', $prog->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                 <form action="{{ route('programas.destroy', $prog->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este programa?')">

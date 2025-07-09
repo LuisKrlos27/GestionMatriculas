@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Materia;
 use App\Models\Programa;
+use App\Models\Sede;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
@@ -13,9 +14,9 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        $materia = Materia::with('programa')->get();
-
-        return view("materias.materiasindex", compact("materia"));
+        $materia = Materia::all();
+        $sede = Sede::all();
+        return view("materias.materiasindex", compact("materia","sede"));
     }
 
     /**
@@ -24,7 +25,8 @@ class MateriaController extends Controller
     public function create()
     {
         $programa = Programa::all();
-        return view("materias.materiasform", compact("programa"));
+        $sede = Sede::all();
+        return view("materias.materiasform", compact("programa","sede"));
 
     }
 
@@ -33,12 +35,18 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
 
         $validated = $request->validate([
             'nombre' => 'nullable|string|max:100',
             'codigo' => 'nullable|integer|min:0|unique:materias,codigo',
             'id_programa' => 'required|exists:programas,id',
+            'id_cod_prog'=> 'nullable|integer',
+            'id_sede'=> 'nullable|exists:sedes,id',
         ]);
+        $programa = Programa::findOrFail($validated['id_programa']);
+        $validated['id_cod_prog'] = $programa->codigo; // Guardar el valor del código
+
         Materia::create($validated);
 
 
@@ -59,7 +67,8 @@ class MateriaController extends Controller
     public function edit(Materia $materia)
     {
         $programa = Programa::all();
-        return view('materias.materiasedit', compact('materia','programa'));
+        $sede = Sede::all();
+        return view('materias.materiasedit', compact('materia','programa','sede'));
     }
 
     /**
@@ -71,6 +80,8 @@ class MateriaController extends Controller
             'nombre' => 'nullable|string|max:100',
             'codigo' => 'nullable|integer|min:0|unique:materias,codigo,' . $materia->id,
             'id_programa' => 'required|exists:programas,id',
+            'id_cod_prog'=> 'nullable|integer',
+            'id_sede'=> 'nullable|exists:sedes,id',
         ]);
         $materia->update($validated);
         return redirect()->route('materias.index')->with('success','Materia registrada correctamente.');

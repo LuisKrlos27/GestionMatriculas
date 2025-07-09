@@ -44,6 +44,29 @@
         </div>
 
         <div>
+            <label class="label">Sede</label>
+            <select name="id_sede" class="select select-bordered w-full">
+                <option value="">-- Seleccione una sede --</option>
+                @foreach($sede as $se)
+                    <option value="{{ $se->id }}" {{ $se->id == $estudiante->id_sede ? 'selected' : '' }}>
+                        {{ $se->nombre }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label class="label">Programa</label>
+            <select name="id_programa" class="select select-bordered w-full">
+                <option value="">-- Seleccione un programa --</option>
+                @foreach($programa as $prog)
+                    <option value="{{ $prog->id }}" {{ $prog->id == $estudiante->id_programa ? 'selected' : '' }}>
+                        {{ $prog->nombre }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
             <label class="label">Fecha de Nacimiento</label>
             <input type="date" name="fecha_nacimiento" value="{{ $estudiante->fecha_nacimiento }}" class="input input-bordered w-full">
         </div>

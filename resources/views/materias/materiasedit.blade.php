@@ -30,7 +30,22 @@
                 </select>
             </div>
 
+            <div>
+                <label class="label">Codigo del programa</label>
+                <input type="text" name="id_prog_cod" value="{{ $materia->id_cod_prog }}" class="input input-bordered w-full" required>
+            </div>
 
+            <div>
+                <label class="label">sede</label>
+                <select name="id_programa" class="select select-bordered w-full">
+                    <option value="">-- Seleccione una sede --</option>
+                    @foreach($sede as $se)
+                        <option value="{{ $se->id }}" {{ $se->id == $materia->id_sede ? 'selected' : '' }}>
+                            {{ $se->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <div class="flex justify-end gap-4 pt-4">
                 <a href="{{ route('materias.index') }}" class="btn btn-outline">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
