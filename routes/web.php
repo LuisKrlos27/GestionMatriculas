@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\GruposController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\MateriaDocenteController;
 use App\Http\Controllers\MatriculaController;
@@ -17,7 +18,7 @@ Route::resource('materias', MateriaController::class);
 Route::resource('programas', ProgramaController::class);
 Route::resource('materias_docente', MateriaDocenteController::class);
 Route::resource('matriculas', MatriculaController::class);
-
+Route::resource('grupos', GrupoController::class);
 
 Route::get('/prueba', function () {
     return 'Ruta funcionando';

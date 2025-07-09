@@ -21,9 +21,11 @@ return new class extends Migration
             $table->bigInteger('telefono');
             $table->string('correo',50);
             $table->bigInteger('id_sede');
-            $table->foreign('id_sede')->references('id')->on('sedes');$table->date('fecha_nacimiento')->nullable();
+            $table->foreign('id_sede')->references('id')->on('sedes');
             $table->bigInteger('id_programa');
             $table->foreign('id_programa')->references('id')->on('programas');
+            $table->date('fecha_nacimiento')->nullable();
+
             $table->timestamps();
         });
     }
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estduantes');
+        Schema::dropIfExists('estudiantes');
     }
 };

@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Materia_Docente extends Model
+class Horario extends Model
 {
-    
-    protected $table = 'materias_docentes';
-
+    protected $table = "horarios";
     protected $fillable = [
-        'id_docente', 'id_materia', 'id_sede',
-        'id_programa', 'semestre', 'id_horario'
+        'id_docente', 'id_sede', 'id_materia', 'id_programa',
+        'horas', 'fecha_inicio', 'fecha_final'
     ];
 
     public function docente()
@@ -34,8 +32,8 @@ class Materia_Docente extends Model
         return $this->belongsTo(Programa::class, 'id_programa');
     }
 
-    public function horario()
+    public function materiasDocentes()
     {
-        return $this->belongsTo(Horario::class, 'id_horario');
+        return $this->hasMany(Materia_Docente::class, 'id_horario');
     }
 }
