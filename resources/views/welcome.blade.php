@@ -18,6 +18,18 @@
                 <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                     <li>
                         <details>
+                            <summary>Academico</summary>
+                            <ul class="p-2">
+                                <li><a href="{{ route('programas.index') }}" >Programas</a></li>
+                                <li><a href="{{ route('materias.index') }}" >Materias</a></li>
+                                <li><a href="{{ route('horarios.index') }}" >Horarios</a></li>
+                                <li><a href="{{ route('grupos.index') }}" >Grupos</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li>
+                        <details>
                             <summary>Docentes</summary>
                             <ul class="p-2">
                                 <li><a href="{{ route('docentes.index') }}">Listar docentes</a></li>
@@ -25,16 +37,44 @@
                             </ul>
                         </details>
                     </li>
-                    <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
-                    <li><a href="{{ route('matriculas.index') }}">Matriculas</a></li>
-                    <li><a href="{{ route('programas.index') }}" >Programas</a></li>
-                    <li><a href="{{ route('materias.index') }}" >Materias</a></li>
+
+                    <li>
+                        <details>
+                            <summary>Estudiantes</summary>
+                            <ul class="p-2">
+                                <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
+                                <li><a href="{{ route('matriculas.index') }}">Matriculas</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li>
+                        <details>
+                            <summary>Institucional</summary>
+                            <ul class="p-2">
+                                <li><a href="{{ route('sedes.index') }}">Sedes</a></li>
+
+                            </ul>
+                        </details>
+                    </li>
                 </ul>
             </div>
             <a href="http://127.0.0.1:8000/" class="btn btn-ghost text-xl">Gestión Matrículas</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
+                <li>
+                    <details>
+                        <summary>Academico</summary>
+                        <ul class="p-2">
+                            <li><a href="{{ route('programas.index') }}" >Programas</a></li>
+                            <li><a href="{{ route('materias.index') }}" >Materias</a></li>
+                            <li><a href="{{ route('horarios.index') }}" >Horarios</a></li>
+                            <li><a href="{{ route('grupos.index') }}" >Grupos</a></li>
+                        </ul>
+                    </details>
+                </li>
+
                 <li>
                     <details>
                         <summary>Docentes</summary>
@@ -44,10 +84,25 @@
                         </ul>
                     </details>
                 </li>
-                <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
-                <li><a href="{{ route('matriculas.index') }}">Matriculas</a></li>
-                <li><a href="{{ route('programas.index') }}">Programas</a></li>
-                <li><a href="{{ route('materias.index') }}">Materias</a></li>
+
+                <li>
+                    <details>
+                        <summary>Estudiantes</summary>
+                        <ul class="p-2">
+                            <li><a href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
+                            <li><a href="{{ route('matriculas.index') }}">Matriculas</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>Institucional</summary>
+                        <ul class="p-2">
+                            <li><a href="{{ route('sedes.index') }}">Sedes</a></li>
+
+                        </ul>
+                    </details>
+                </li>
             </ul>
         </div>
         <div class="navbar-end">

@@ -12,7 +12,8 @@ class SedeController extends Controller
      */
     public function index()
     {
-        //
+        $sede = Sede::all();
+        return view("sedes.sedesindex", compact("sede"));
     }
 
     /**
