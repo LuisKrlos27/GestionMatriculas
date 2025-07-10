@@ -49,7 +49,10 @@
                     <tr>
                         <th>Docente</th>
                         <th>Materia</th>
+                        <th>Sede</th>
+                        <th>Programa</th>
                         <th>Semestre</th>
+                        <th>Horario</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -58,7 +61,10 @@
                         <tr>
                             <td>{{ $matdoc->docente?->nombre ?? 'Docente no encontrado' }}</td>
                             <td>{{ $matdoc->materia?->nombre ?? 'Materia no encontrada' }}</td>
+                            <td>{{ $matdoc->sede?->nombre ?? 'Sede no encontrada' }}</td>
+                            <td>{{ $matdoc->programa?->nombre ?? 'Programa no encontrado' }}</td>
                             <td>{{ $matdoc->semestre }}</td>
+                            <td>{{ $matdoc->horario?->dia }} - {{ $matdoc->horario?->bloque }}</td>
                             <td class="flex flex-col sm:flex-row gap-1">
                                 <a href="{{ route('materias_docente.edit', $matdoc->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                 <form action="{{ route('materias_docente.destroy', $matdoc->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este docente?')">

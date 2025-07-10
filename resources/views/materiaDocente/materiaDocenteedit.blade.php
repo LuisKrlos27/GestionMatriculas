@@ -49,9 +49,46 @@
             </div>
 
             <div>
+                <label class="label">sede</label>
+                <select name="id_sede" class="select select-info w-full">
+                    <option value="">-- Seleccione una sede --</option>
+                    @foreach($sede as $se)
+                        <option value="{{ $se->id }}" {{ $se->id == $materias_docente->id_sede ? 'selected' : '' }}>
+                            {{ $se->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div>
+                <label class="label">Programa</label>
+                <select name="id_programa" class="select select-info w-full">
+                    <option value="">-- Seleccione un programa --</option>
+                    @foreach($programa as $prog)
+                        <option value="{{ $prog->id }}" {{ $prog->id == $materias_docente->id_programa ? 'selected' : '' }}>
+                            {{ $prog->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div>
                 <label class="label">Semestre</label>
                 <input type="number" name="semestre" value="{{ $materias_docente->semestre }}" class="input input-info w-full" required>
             </div>
+
+            <div>
+                <label class="label">Horario</label>
+                <select name="id_horario" class="select select-info w-full">
+                    <option value="">-- Seleccione un horario --</option>
+                    @foreach($horario as $hor)
+                        <option value="{{ $hor->id }}" {{ $hor->id == $materias_docente->id_horario ? 'selected' : '' }}>
+                            {{ $hor->docente->nombre ?? 'Sin docente' }} - {{ $hor->materia->nombre ?? 'Sin materia' }} - {{ $hor->bloque }} - {{ $hor->dia }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
 
             <div class="flex justify-end gap-4 pt-4">
                 <a href="{{ route('materias_docente.index') }}" class="btn btn-outline">Cancelar</a>
