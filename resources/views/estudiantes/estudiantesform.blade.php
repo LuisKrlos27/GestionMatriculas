@@ -4,7 +4,7 @@
 
 <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
 
-    <h2 class="text-2xl font-bold mb-6">Registrar Nuevo Estudiante</h2>
+    <h2 class="text-2xl font-bold mb-6">Registrar nuevo estudiante</h2>
 
     <form action="{{ route('estudiantes.store') }}" method="POST" class="space-y-4">
         @csrf
@@ -63,7 +63,7 @@
                 @endforeach
             </select>
         </div>
-        
+
         <div>
             <label class="label">Fecha de Nacimiento</label>
             <input type="date" name="fecha_nacimiento" class="input input-bordered w-full">

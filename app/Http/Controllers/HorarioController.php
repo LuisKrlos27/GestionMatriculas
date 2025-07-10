@@ -126,7 +126,7 @@ class HorarioController extends Controller
 
     $horario->update($validated);
 
-    return redirect()->route('horarios.index')->with('success', 'Horario registrado correctamente.');
+    return redirect()->route('horarios.index')->with('success', 'Horario actualizado correctamente.');
 
     }
 

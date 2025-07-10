@@ -26,7 +26,7 @@
 
             <div class="flex justify-end gap-4 pt-4">
                 <a href="{{ route('estudiantes.index') }}" class="btn btn-outline">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
             </div>
         </form>
     </div>

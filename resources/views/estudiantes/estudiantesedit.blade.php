@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
-    <h2 class="text-2xl font-bold mb-6">Editar Estudiante</h2>
+    <h2 class="text-2xl font-bold mb-6">Editar estudiante</h2>
 
     <form action="{{ route('estudiantes.update', $estudiante->id) }}" method="POST" class="space-y-4">
         @csrf
@@ -73,7 +73,7 @@
 
         <div class="flex justify-end gap-4 pt-4">
             <a href="{{ route('estudiantes.index') }}" class="btn btn-outline">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </div>
     </form>
 </div>

@@ -40,8 +40,8 @@
         <!-- Tabla de Docentes -->
         <div class="md:col-span-3 bg-base-100 p-4 rounded shadow overflow-x-auto">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
-                <h2 class="text-xl font-bold">Listado de Docentes</h2>
-                <a href="{{ route('docentes.create') }}" class="btn btn-success w-full sm:w-auto">+ Nuevo Docente</a>
+                <h2 class="text-xl font-bold">LISTADO DE DOCENTES</h2>
+                <a href="{{ route('docentes.create') }}" class="btn btn-success w-full sm:w-auto">+ Nuevo docente</a>
             </div>
 
             <table class="table table-zebra w-full text-sm">
