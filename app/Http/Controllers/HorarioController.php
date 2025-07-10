@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sede;
+use App\Models\Grupo;
 use App\Models\Docente;
 use App\Models\Horario;
 use App\Models\Materia;
 use App\Models\Programa;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 use function Pest\Laravel\delete;
+use App\Http\Controllers\Controller;
 
 class HorarioController extends Controller
 {
@@ -20,7 +21,7 @@ class HorarioController extends Controller
     public function index()
     {
         //hago uso de las relaciones
-        $horarios = Horario::with('materia', 'docente', 'programa', 'sede')->get();
+        $horarios = Horario::with('materia', 'docente', 'programa', 'sede','grupo')->get();
 
         //creo un array para separar por grupos los horarios
         $horariosAgrupados = [
@@ -62,7 +63,8 @@ class HorarioController extends Controller
         $docentes = Docente::all();
         $sedes = Sede::all();
         $programas = Programa::all();
-        return view('horarios.horariosform', compact('materias', 'docentes', 'sedes', 'programas'));
+        $grupo = Grupo::all();
+        return view('horarios.horariosform', compact('materias', 'docentes', 'sedes', 'programas','grupo'));
 
     }
 
@@ -80,6 +82,7 @@ class HorarioController extends Controller
             'bloque' => 'required|string|in:mañana,tarde',
             'fecha_inicio'=> 'date',
             'fecha_final'=> 'date',
+            'id_grupo'=> 'required|exists:grupos,id',
     ]);
 
     Horario::create($validated);
@@ -105,7 +108,8 @@ class HorarioController extends Controller
         $docentes = Docente::all();
         $sedes = Sede::all();
         $programas = Programa::all();
-        return view('horarios.horariosedit', compact('horario','materias', 'docentes', 'sedes', 'programas'));
+        $grupo = Grupo::all();
+        return view('horarios.horariosedit', compact('horario','materias', 'docentes', 'sedes', 'programas','grupo'));
     }
 
     /**
@@ -122,6 +126,7 @@ class HorarioController extends Controller
             'bloque' => 'required|string|in:mañana,tarde',
             'fecha_inicio'=> 'date',
             'fecha_final'=> 'date',
+            'id_grupo'=> 'required|exists:grupos,id',
     ]);
 
     $horario->update($validated);

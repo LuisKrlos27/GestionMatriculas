@@ -28,7 +28,10 @@ return new class extends Migration
 
             $table->string('dia', 15);
             $table->string('bloque', 20);
-            
+
+            $table->bigInteger('id_grupo');
+            $table->foreign('id_grupo')->references('id')->on('grupos');
+
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_final')->nullable();
 

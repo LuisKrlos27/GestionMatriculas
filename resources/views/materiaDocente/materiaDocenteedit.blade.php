@@ -18,7 +18,7 @@
                 </div>
             </div>
         @endif
-        <h2 class="text-2xl font-bold mb-6">Editar</h2>
+        <h2 class="text-2xl font-bold mb-6">EDITAR</h2>
 
         <form action="{{ route('materias_docente.update', $materias_docente) }}" method="POST" class="space-y-4">
             @csrf

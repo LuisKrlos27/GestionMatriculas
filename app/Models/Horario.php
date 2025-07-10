@@ -9,7 +9,7 @@ class Horario extends Model
     protected $table = "horarios";
     protected $fillable = [
         'id_docente', 'id_sede', 'id_materia', 'id_programa',
-        'bloque','dia','fecha_inicio', 'fecha_final'
+        'bloque','dia','fecha_inicio', 'fecha_final','id_grupo'
     ];
 
     public function docente()
@@ -35,5 +35,10 @@ class Horario extends Model
     public function materiasDocentes()
     {
         return $this->hasMany(Materia_Docente::class, 'id_horario');
+    }
+
+    public function grupo()
+    {
+        return $this->belongsTo(Grupo::class, 'id_grupo');
     }
 }

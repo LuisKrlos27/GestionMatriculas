@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold mb-6">Editar docente</h2>
+        <h2 class="text-2xl font-bold mb-6">EDITAR DOCENTE</h2>
 
         <form action="{{ route('docentes.update', $docente->id) }}" method="POST" class="space-y-4">
             @csrf

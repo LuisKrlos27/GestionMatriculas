@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold mb-6">Editar materias</h2>
+        <h2 class="text-2xl font-bold mb-6">EDITAR MATERIAS</h2>
 
         <form action="{{ route('materias.update', $materia->id) }}" method="POST" class="space-y-4">
             @csrf
@@ -37,7 +37,7 @@
 
             <div>
                 <label class="label">sede</label>
-                <select name="id_programa" class="select select-bordered w-full">
+                <select name="id_sede" class="select select-bordered w-full">
                     <option value="">-- Seleccione una sede --</option>
                     @foreach($sede as $se)
                         <option value="{{ $se->id }}" {{ $se->id == $materia->id_sede ? 'selected' : '' }}>

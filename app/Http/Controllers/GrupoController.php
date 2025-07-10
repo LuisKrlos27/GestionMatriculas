@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sede;
 use App\Models\Grupo;
+use App\Models\Programa;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GrupoController extends Controller
 {
@@ -12,7 +15,11 @@ class GrupoController extends Controller
      */
     public function index()
     {
-        //
+        $grupo = Grupo::all();
+        $sede = Sede::all();
+        $programa = Programa::all();
+
+        return view("grupos.gruposindex", compact("grupo","sede","programa"));
     }
 
     /**
@@ -20,7 +27,11 @@ class GrupoController extends Controller
      */
     public function create()
     {
-        //
+        $grupo = Grupo::all();
+        $sede = Sede::all();
+        $programa = Programa::all();
+
+        return view("grupos.gruposform", compact("grupo","sede","programa"));
     }
 
     /**
@@ -28,7 +39,14 @@ class GrupoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "nombre"=> "required|string|max:100",
+            "id_programa"=> "required|exists:programas,id",
+            "id_sede"=> "required|exists:sedes,id",
+        ]);
+
+        Grupo::create($validated);
+        return redirect()->route("grupos.index")->with("success","Grupo creado correctamente");
     }
 
     /**
@@ -44,7 +62,11 @@ class GrupoController extends Controller
      */
     public function edit(Grupo $grupo)
     {
-        //
+        $sede = Sede::all();
+        $programa = Programa::all();
+
+        return view("grupos.gruposedit", compact("grupo","sede","programa"));
+
     }
 
     /**
@@ -52,7 +74,15 @@ class GrupoController extends Controller
      */
     public function update(Request $request, Grupo $grupo)
     {
-        //
+        $validated = $request->validate([
+            'nombre'=>'required|string|max:100',
+            'id_programa'=> 'required|exists:programas,id',
+            'id_sede'=>'required|exists:sedes,id',
+        ]);
+
+        $grupo->update($validated);
+        return redirect()->route("grupos.index")->with("success","Grupo actualizado correctamente");
+
     }
 
     /**
@@ -60,6 +90,8 @@ class GrupoController extends Controller
      */
     public function destroy(Grupo $grupo)
     {
-        //
+        $grupo->delete();
+
+        return redirect()->route("grupos.index")->with("success","Grupo eliminado correctamente.");
     }
 }

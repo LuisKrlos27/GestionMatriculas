@@ -86,6 +86,18 @@
             </div>
         </div>
 
+        <!-- Grupos -->
+        <div>
+            <label class="label">Grupo</label>
+            <select name="id_grupo" class="select select-bordered w-full">
+                <option value="">-- Seleccione un grupo --</option>
+                @foreach($grupo as $gru)
+                    <option value="{{ $gru->id }}">{{ $gru->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
+
+
         <!-- Botones -->
         <div class="flex justify-end gap-4 mt-6">
             <a href="{{ route('horarios.index') }}" class="btn btn-outline">Cancelar</a>

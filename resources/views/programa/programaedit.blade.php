@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold mb-6">Editar programa</h2>
+        <h2 class="text-2xl font-bold mb-6">EDITAR PROGRAMA</h2>
 
         <form action="{{ route('programas.update', $programa->id) }}" method="POST" class="space-y-4">
             @csrf

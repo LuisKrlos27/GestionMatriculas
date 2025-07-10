@@ -65,6 +65,8 @@
                                     <div><strong>Docente:</strong> {{ $hor->docente->nombre }}</div>
                                     <div><strong>Programa:</strong> {{ $hor->programa->nombre }}</div>
                                     <div><strong>Sede:</strong> {{ $hor->sede->nombre }}</div>
+                                    <div><strong>Grupo:</strong> {{ $hor->grupo->nombre }}</div>
+
 
                                     {{-- Botones de editar y eliminar --}}
                                     <div class="mt-1 flex gap-1">
@@ -90,6 +92,7 @@
                                             <div><strong>Docente:</strong> {{ $hor->docente->nombre }}</div>
                                             <div><strong>Programa:</strong> {{ $hor->programa->nombre }}</div>
                                             <div><strong>Sede:</strong> {{ $hor->sede->nombre }}</div>
+                                            <div><strong>Grupo:</strong> {{ $hor->grupo->nombre }}</div>
 
                                             {{-- Botones de editar y eliminar para los otros horarios --}}
                                             <div class="mt-1 flex gap-1">

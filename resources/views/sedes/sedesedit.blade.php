@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold mb-6">Editar sede</h2>
+        <h2 class="text-2xl font-bold mb-6">EDITAR SEDE</h2>
 
         <form action="{{ route('sedes.update', $sede) }}" method="POST" class="space-y-4">
             @csrf

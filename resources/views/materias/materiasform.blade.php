@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold mb-6">Registrar nueva materia</h2>
+        <h2 class="text-2xl font-bold mb-6">REGISTRAR NUEVA MATERIA</h2>
 
         <form action="{{ route('materias.store') }}" method="POST" class="space-y-4">
             @csrf
@@ -49,7 +49,7 @@
             </div>
         </form>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const programaSelect = document.getElementById('programa-select');

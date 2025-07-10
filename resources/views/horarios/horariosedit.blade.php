@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="max-w-3xl mx-auto p-6 bg-base-100 shadow rounded-lg">
-    <h2 class="text-2xl font-bold mb-6 text-center">Editar Horario</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center">EDITAR HORARIO</h2>
 
     <form action="{{ route('horarios.update', $horario->id) }}" method="POST" class="space-y-4">
         @csrf
