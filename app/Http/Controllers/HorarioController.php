@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sede;
+use App\Models\Docente;
 use App\Models\Horario;
+use App\Models\Materia;
+use App\Models\Programa;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use function Pest\Laravel\delete;
 
 class HorarioController extends Controller
 {
@@ -12,7 +19,38 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        //
+        //hago uso de las relaciones
+        $horarios = Horario::with('materia', 'docente', 'programa', 'sede')->get();
+
+        //creo un array para separar por grupos los horarios
+        $horariosAgrupados = [
+            'mañana' => [
+                'lunes' => [],
+                'martes' => [],
+                'miércoles' => [],
+                'jueves' => [],
+                'viernes' => [],
+                'sábado' => [],
+            ],
+            'tarde' => [
+                'lunes' => [],
+                'martes' => [],
+                'miércoles' => [],
+                'jueves' => [],
+                'viernes' => [],
+                'sábado' => [],
+            ],
+        ];
+
+
+        //recorro cada posicion y strlower para convertir todo lo que viene en minisculas
+        foreach ($horarios as $hor) {
+            $bloque = strtolower($hor->bloque);
+            $dia = strtolower($hor->dia);
+            $horariosAgrupados[$bloque][$dia][] = $hor;
+        }
+
+        return view("horarios.horariosindex", compact('horariosAgrupados'));
     }
 
     /**
@@ -20,7 +58,12 @@ class HorarioController extends Controller
      */
     public function create()
     {
-        //
+        $materias = Materia::all();
+        $docentes = Docente::all();
+        $sedes = Sede::all();
+        $programas = Programa::all();
+        return view('horarios.horariosform', compact('materias', 'docentes', 'sedes', 'programas'));
+
     }
 
     /**
@@ -28,7 +71,21 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id_docente' => 'required|exists:docentes,id',
+            'id_sede' => 'required|exists:sedes,id',
+            'id_materia' => 'required|exists:materias,id',
+            'id_programa' => 'required|exists:programas,id',
+            'dia' => 'required|string|in:lunes,martes,miércoles,jueves,viernes,sábado',
+            'bloque' => 'required|string|in:mañana,tarde',
+            'fecha_inicio'=> 'date',
+            'fecha_final'=> 'date',
+    ]);
+
+    Horario::create($validated);
+
+    return redirect()->route('horarios.index')->with('success', 'Horario registrado correctamente.');
+
     }
 
     /**
@@ -44,7 +101,11 @@ class HorarioController extends Controller
      */
     public function edit(Horario $horario)
     {
-        //
+        $materias = Materia::all();
+        $docentes = Docente::all();
+        $sedes = Sede::all();
+        $programas = Programa::all();
+        return view('horarios.horariosedit', compact('horario','materias', 'docentes', 'sedes', 'programas'));
     }
 
     /**
@@ -52,7 +113,21 @@ class HorarioController extends Controller
      */
     public function update(Request $request, Horario $horario)
     {
-        //
+        $validated = $request->validate([
+            'id_docente' => 'required|exists:docentes,id',
+            'id_sede' => 'required|exists:sedes,id',
+            'id_materia' => 'required|exists:materias,id',
+            'id_programa' => 'required|exists:programas,id',
+            'dia' => 'required|string|in:lunes,martes,miércoles,jueves,viernes,sábado',
+            'bloque' => 'required|string|in:mañana,tarde',
+            'fecha_inicio'=> 'date',
+            'fecha_final'=> 'date',
+    ]);
+
+    $horario->update($validated);
+
+    return redirect()->route('horarios.index')->with('success', 'Horario registrado correctamente.');
+
     }
 
     /**
@@ -60,6 +135,7 @@ class HorarioController extends Controller
      */
     public function destroy(Horario $horario)
     {
-        //
+        $horario->delete();
+        return redirect()->route('horarios.index')->with('success','Horario eliminado correctamente.');
     }
 }

@@ -21,7 +21,7 @@ class SedeController extends Controller
      */
     public function create()
     {
-        //
+        return view("sedes.sedesform");
     }
 
     /**
@@ -29,7 +29,17 @@ class SedeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $validated = $request->validate([
+            'nombre'=>'required|string|max:100',
+            'ciudad'=> 'required|string|max:100',
+            'codigo_postal'=> 'required|integer',
+            'direccion'=> 'required|string|max:50',
+            'telefono'=> 'required|integer',
+        ]);
+
+        Sede::create($validated);
+        return redirect()->route('sedes.index')->with('success','Sede registrada correctamente.');
     }
 
     /**
@@ -45,7 +55,7 @@ class SedeController extends Controller
      */
     public function edit(Sede $sede)
     {
-        //
+        return view('sedes.sedesedit', compact('sede'));
     }
 
     /**
@@ -53,7 +63,18 @@ class SedeController extends Controller
      */
     public function update(Request $request, Sede $sede)
     {
-        //
+        //dd($request->all());
+        $validated = $request->validate([
+            'nombre'=>'required|string|max:100',
+            'ciudad'=> 'required|string|max:100',
+            'codigo_postal'=> 'required|integer',
+            'direccion'=> 'required|string|max:50',
+            'telefono'=> 'required|integer',
+        ]);
+
+        $sede->update($validated);
+        return redirect()->route('sedes.index')->with('success','Sede actualizada correctamente.');
+
     }
 
     /**
@@ -61,6 +82,7 @@ class SedeController extends Controller
      */
     public function destroy(Sede $sede)
     {
-        //
+        $sede->delete();
+        return redirect()->route('sedes.index')->with('success','Sede eliminada correctamente.');
     }
 }

@@ -26,7 +26,9 @@ return new class extends Migration
             $table->BigInteger('id_programa');
             $table->foreign('id_programa')->references('id')->on('programas');
 
-            $table->integer('horas');
+            $table->string('dia', 15);
+            $table->string('bloque', 20);
+            
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_final')->nullable();
 
