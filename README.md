@@ -33,6 +33,9 @@ El sistema permite:
 
 ![image](https://github.com/user-attachments/assets/c3c9646a-dbd5-4065-9ac9-92a046b7bdb4)
 
+---
+### 🗓️ __HORARIO ACADEMICO__
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/84d8b35a-766f-4001-9597-c2beb80afc9e" />
 
 ---
 # 📌 Notas
