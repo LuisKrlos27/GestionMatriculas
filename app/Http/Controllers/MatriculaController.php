@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sede;
+use App\Models\Grupo;
+use App\Models\Materia;
+use App\Models\Programa;
 use App\Models\Matricula;
 use App\Models\Estudiante;
-use App\Models\Materia;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MatriculaController extends Controller
 {
@@ -17,8 +21,11 @@ class MatriculaController extends Controller
         $matricula =Matricula::all();
         $estudiante = Estudiante::all();
         $materia = Materia::all();
+        $sede = Sede::all();
+        $programa = Programa::all();
+        $grupo = Grupo::all();
 
-        return view("matriculas.matriculasindex", compact("matricula","estudiante","materia"));
+        return view("matriculas.matriculasindex", compact("matricula","estudiante","materia","sede","programa",'grupo'));
     }
 
     /**
@@ -28,7 +35,10 @@ class MatriculaController extends Controller
     {
         $estudiante = Estudiante::all();
         $materia = Materia::all();
-        return view("matriculas.matriculasform", compact("estudiante","materia"));
+        $programa = Programa::all();
+        $sede = Sede::all();
+        $grupo = Grupo::all();
+        return view("matriculas.matriculasform", compact("estudiante","materia","sede","programa","grupo"));
     }
 
     /**
@@ -39,7 +49,10 @@ class MatriculaController extends Controller
         //($request);
         $validated = $request->validate([
             'id_estudiante'=>'required|exists:estudiantes,id',
+            'id_sede'=>'required|exists:sedes,id',
+            'id_programa'=>'required|exists:programas,id',
             'id_materia'=> 'required|exists:materias,id',
+            'id_grupo'=>'required|exists:grupos,id',
             'fecha_matricula'=> 'required|date',
             'estado'=> 'required|boolean',
         ]);
@@ -51,7 +64,7 @@ class MatriculaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Matricula $matriculas)
+    public function show(Matricula $matricula)
     {
         //
     }
@@ -59,27 +72,33 @@ class MatriculaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Matricula $matriculas)
+    public function edit(Matricula $matricula)
     {
         $estudiante = Estudiante::all();
         $materia = Materia::all();
-        return view("matriculas.matriculasedit", compact("estudiante","materia"));
+        $sede = Sede::all();
+        $programa = Programa::all();
+        $grupo = Grupo::all();
+        return view("matriculas.matriculasedit", compact("matricula","estudiante","materia","programa","sede","grupo"));
 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Matricula $matriculas)
+    public function update(Request $request, Matricula $matricula)
     {
-         //($request);
+        //dd($request->all());
         $validated = $request->validate([
             'id_estudiante'=>'required|exists:estudiantes,id',
+            'id_sede'=>'required|exists:sedes,id',
+            'id_programa'=>'required|exists:programas,id',
             'id_materia'=> 'required|exists:materias,id',
+            'id_grupo'=>'required|exists:grupos,id',
             'fecha_matricula'=> 'required|date',
             'estado'=> 'required|boolean',
         ]);
-        $matriculas->update($validated);
+        $matricula->update($validated);
         return redirect()->route('matriculas.index')->with('success','Matricula actualizada correctamente.');
     }
 

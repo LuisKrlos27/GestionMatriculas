@@ -47,7 +47,10 @@
                 <thead>
                     <tr>
                         <th>Estudiante</th>
+                        <th>Sede</th>
+                        <th>Programa</th>
                         <th>Materia</th>
+                        <th>Grupo</th>
                         <th>F. Matricula</th>
                         <th>Estado</th>
                         <th>Opciones</th>
@@ -56,8 +59,11 @@
                 <tbody>
                     @foreach ($matricula as $matri)
                         <tr>
-                            <td>{{ $matri->estudiante?->nombre }}</td>-
+                            <td>{{ $matri->estudiante?->nombre }}</td>
+                            <td>{{ $matri->sede?->nombre }}</td>
+                            <td>{{ $matri->programa?->nombre }}</td>
                             <td>{{ $matri->materia?->nombre }}</td>
+                            <td>{{ $matri->grupo?->nombre }}</td>
                             <td>{{ $matri->fecha_matricula }}</td>
                             <td>
                                 <span class="badge {{ $matri->estado ? 'badge-success' : 'badge-error' }}">

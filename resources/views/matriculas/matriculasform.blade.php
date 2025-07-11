@@ -6,7 +6,6 @@
         <form action="{{ route('matriculas.store') }}" method="POST" class="space-y-4">
             @csrf
 
-            {{-- Estudiante --}}
             <div>
                 <label for="id_estudiante" class="label">Estudiante</label>
                 <select name="id_estudiante" id="id_estudiante" class="select select-bordered w-full" required>
@@ -22,7 +21,36 @@
                 @enderror
             </div>
 
-            {{-- Materia --}}
+            <div>
+                <label for="id_sede" class="label">Sede</label>
+                <select name="id_sede" id="id_sede" class="select select-bordered w-full" required>
+                    <option value="">-- Seleccione una sede --</option>
+                    @foreach($sede as $sed)
+                        <option value="{{ $sed->id }}" {{ old('id_sede') == $sed->id ? 'selected' : '' }}>
+                            {{ $sed->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_sede')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div>
+                <label for="id_programa" class="label">Programa</label>
+                <select name="id_programa" id="id_programa" class="select select-bordered w-full" required>
+                    <option value="">-- Seleccione un programa --</option>
+                    @foreach($programa as $pro)
+                        <option value="{{ $pro->id }}" {{ old('id_programa') == $pro->id ? 'selected' : '' }}>
+                            {{ $pro->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_programa')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
             <div>
                 <label for="id_materia" class="label">Materia</label>
                 <select name="id_materia" id="id_materia" class="select select-bordered w-full" required>
@@ -38,7 +66,21 @@
                 @enderror
             </div>
 
-            {{-- Fecha de matrícula --}}
+            <div>
+                <label for="id_grupo" class="label">Grupo</label>
+                <select name="id_grupo" id="id_grupo" class="select select-bordered w-full" required>
+                    <option value="">-- Seleccione un grupo --</option>
+                    @foreach($grupo as $gru)
+                        <option value="{{ $gru->id }}" {{ old('id_grupo') == $gru->id ? 'selected' : '' }}>
+                            {{ $gru->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_grupo')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
             <div>
                 <label for="fecha_matricula" class="label">Fecha de matrícula</label>
                 <input type="date" name="fecha_matricula" id="fecha_matricula" class="input input-bordered w-full" value="{{ old('fecha_matricula') }}" required>
@@ -47,7 +89,6 @@
                 @enderror
             </div>
 
-            {{-- Estado --}}
             <div>
                 <label for="estado" class="label">Estado</label>
                 <select name="estado" id="estado" class="select select-bordered w-full" required>
@@ -59,7 +100,6 @@
                 @enderror
             </div>
 
-            {{-- Botones --}}
             <div class="flex justify-end gap-4 pt-4">
                 <a href="{{ route('matriculas.index') }}" class="btn btn-outline">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar</button>

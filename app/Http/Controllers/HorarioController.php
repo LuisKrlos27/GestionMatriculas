@@ -59,6 +59,7 @@ class HorarioController extends Controller
      */
     public function create()
     {
+        
         $materias = Materia::all();
         $docentes = Docente::all();
         $sedes = Sede::all();

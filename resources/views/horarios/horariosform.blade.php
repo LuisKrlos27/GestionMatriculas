@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="max-w-3xl mx-auto p-6 bg-base-100 shadow rounded-lg">
+    
     <h2 class="text-2xl font-bold mb-6 text-center">AGREGAR NUEVO HORARIO </h2>
 
     <form action="{{ route('horarios.store') }}" method="POST" class="space-y-4">
