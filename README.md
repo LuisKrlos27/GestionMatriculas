@@ -4,26 +4,45 @@ Este proyecto es una aplicación web construida con **Laravel 10**, que permite 
 
 ---
 
-## 🚀 Tecnologías utilizadas
-
+## 🚀 🚀 Tecnologías utilizadas
 - ⚙️ Laravel 10
+
 - 💅 Tailwind CSS
-- 🎨 DaisyUI
-- 🐘 PostgreSQL (o el motor de base de datos que uses)
-- 🧠 Blade Templates
+
+- 🌸 DaisyUI
+
+- ✨ Blade Templates
+
 - 📦 Vite + NPM
 
+- 🐘 PostgreSQL
+
+- 🔮 JavaScript (básico para interacciones)
+
+- 🛠️ Eloquent ORM
+  
 ---
 
-## 📁 Estructura de módulos
-
+## 📁 Módulos del sistema
 El sistema permite:
 
-- ✅ Registrar y listar **estudiantes**
-- ✅ Registrar y listar **docentes**
-- ✅ Crear y asignar **materias** a docentes
-- ✅ Crear **programas académicos**
-- ✅ Realizar **matrículas** por estudiante y materia
+- ✅ Registrar y administrar estudiantes
+
+- ✅ Registrar y administrar docentes
+
+- ✅ Crear y listar materias
+
+- ✅ Crear y asignar materias a docentes
+
+- ✅ Crear y asignar horarios por grupo
+
+- ✅ Crear programas académicos
+
+- ✅ Crear y asignar grupos
+
+- ✅ Realizar matrículas por estudiante, grupo, sede y materia
+
+- ✅ Visualizar horarios académicos con día, bloque, docente, materia y grupo
 
 ---
 
@@ -49,6 +68,8 @@ Las vistas están estructuradas usando @extends(layout') para facilitar el mante
 
 ```bash
 git clone https://github.com/LuisKrlos27/GestionMatriculas.git
+
+cd GestionMatriculas
 
 ```
 ---
