@@ -68,12 +68,13 @@ class ProgramaController extends Controller
      */
     public function update(Request $request, Programa $programa)
     {
+        //dd($request->all());
         $validated = $request->validate([
             'nombre'=> 'required|string|max:100',
-            'codigo' => 'nullable|integer|min:0|unique:programas,codigo',
+            'codigo' => 'required|integer|min:0|unique:programas,id',
             'id_sede'=> 'required|exists:sedes,id',
         ]);
-
+    
         $programa->update($validated);
 
         return redirect()->route("programas.index")->with("success","Programa actualizado correctamente. ");
