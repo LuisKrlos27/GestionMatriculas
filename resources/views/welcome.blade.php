@@ -106,7 +106,15 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="btn">Login</a>
+                        <button class="btn" onclick="my_modal_2.showModal()">Login</button>
+            <dialog id="my_modal_2" class="modal">
+            <div class="modal-box">
+                <h1>aqui</h1>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+            </dialog>
         </div>
     </div>
 
@@ -115,3 +123,6 @@
     </div>
 </body>
 </html>
+
+<!-- Open the modal using ID.showModal() method -->
+
